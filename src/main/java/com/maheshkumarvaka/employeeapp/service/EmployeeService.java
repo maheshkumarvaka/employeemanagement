@@ -8,4 +8,6 @@ public interface EmployeeService {
 	Employee saveEmployee(Employee employee);
 	Employee getEmployee(Integer id);
 	List<Employee> getAllEmployees();
+	void deleteEmployee(Integer id);
+	void updateEmployee(Employee employee,Integer id);
 }
