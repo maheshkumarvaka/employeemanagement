@@ -21,17 +21,17 @@ import com.maheshkumarvaka.employeeapp.service.EmployeeService;
 @RequestMapping("/apis")
 public class EmployeeController {
 	@Autowired
-	private EmployeeService employeeService;
+	private EmployeeService employeeService;	
 	
 	@GetMapping("/getEmp/{id}")
 	public ResponseEntity<Employee> getEmployee(@PathVariable("id") Integer id)
 	{
-		return new ResponseEntity<Employee>(employeeService.getEmployee(id),HttpStatus.OK);
+		return new ResponseEntity<>(employeeService.getEmployee(id),HttpStatus.OK);
 	}
 	
 	@PostMapping("/saveEmp")
 	public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee){
-		return new ResponseEntity<Employee>(employeeService.saveEmployee(employee), HttpStatus.CREATED);				
+			return new ResponseEntity<>(employeeService.saveEmployee(employee), HttpStatus.CREATED);				
 	}		
 	
 	@GetMapping("/getAllEmp")
@@ -42,12 +42,24 @@ public class EmployeeController {
 	@DeleteMapping("/deleteEmp/{id}")
 	public ResponseEntity<String> deleteEmployee(@PathVariable("id") Integer id) {
 		employeeService.deleteEmployee(id);	
-		return new ResponseEntity<String>("Employee with the id "+ id +" deleted successfully",HttpStatus.OK);
+		return new ResponseEntity<>("Employee with the id "+ id +" deleted successfully",HttpStatus.OK);
 	}
 
 	@PutMapping("/updateEmp/{id}")
 	public ResponseEntity<String> updateEmployee(@RequestBody Employee employee,@PathVariable("id") Integer id) {
-		employeeService.updateEmployee(employee,id);
-		return new ResponseEntity<String>("Employee with the id "+ id +" details updated successfully",HttpStatus.OK);
+		employeeService.updateEmployee(employee,id);		
+		return new ResponseEntity<>("Employee with the id "+ id +" details updated successfully",HttpStatus.OK);
+	}
+	
+	@GetMapping("/getEmpDept/{id}")
+	public ResponseEntity<Object> getEmployeeDept(@PathVariable("id") Integer id)
+	{
+		return new ResponseEntity<>(employeeService.getEmployeeDept(id),HttpStatus.OK);
+	}
+	
+	@GetMapping("getEmpCountByDept")
+	public ResponseEntity<List<Object>> getEmployeeCountByDept()
+	{
+		return new ResponseEntity<>(employeeService.getEmployeeCountByDept(),HttpStatus.OK);
 	}
 }

@@ -10,4 +10,6 @@ public interface EmployeeService {
 	List<Employee> getAllEmployees();
 	void deleteEmployee(Integer id);
 	void updateEmployee(Employee employee,Integer id);
+	Object getEmployeeDept(Integer id);
+	List<Object> getEmployeeCountByDept();
 }
