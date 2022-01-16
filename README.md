@@ -1,2 +1,2 @@
 # employeemanagement
-#nothing in main branch. go to master
+#refer to master branch
